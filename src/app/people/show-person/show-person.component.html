@@ -1,0 +1,16 @@
+<a href="#"
+   class="list-group-item list-group-item-action flex-column align-items-start">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1">
+      {{ friend | fullName:' ' }}
+    </h5>
+    <small>
+      <div class="heart-rating">
+        <span class="fa fa-heart"
+              [ngClass]="(friend.fav)?'fa-heart':'fa-heart-o'"
+              (click)="like();false;"
+              data-rating="1"></span>
+      </div>
+    </small>
+  </div>
+</a>

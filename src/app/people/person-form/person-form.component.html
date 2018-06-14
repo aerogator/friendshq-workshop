@@ -1,0 +1,77 @@
+<form [formGroup]=addNewPersonForm
+      (ngSubmit)="onSubmit()">
+
+  <div class="form-group">
+    <label for="id">Id</label>
+    <input type="text"
+           class="form-control"
+           formControlName="id">
+  </div>
+  <div [hidden]="addNewPersonForm.controls.id.valid || addNewPersonForm.controls.id.pristine"
+       class="alert alert-danger">
+    Id is required
+  </div>
+
+  <div class="form-group">
+    <label for="first-name">First name</label>
+    <input type="text"
+           class="form-control"
+           formControlName="firstName">
+  </div>
+  <div [hidden]="addNewPersonForm.controls.firstName.valid || addNewPersonForm.controls.firstName.pristine"
+       class="alert alert-danger">
+    First name is required
+  </div>
+
+  <div class="form-group">
+    <label for="last-name">Last name</label>
+    <input type="text"
+           class="form-control"
+           formControlName="lastName">
+  </div>
+  <div [hidden]="addNewPersonForm.controls.lastName.valid || addNewPersonForm.controls.lastName.pristine"
+       class="alert alert-danger">
+    Last name is required
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <select formControlName="gender"
+            class="form-control">
+      <option value=""
+              selected="select a gender"></option>
+      <option *ngFor="let item of genders | enumToArray"
+              [value]="item.value">{{item.value}}</option>
+    </select>
+
+  </div>
+  <div [hidden]="addNewPersonForm.controls.gender.valid || addNewPersonForm.controls.gender.pristine"
+       class="alert alert-danger">
+    Gender is required
+  </div>
+
+  <div class="form-group">
+    <label for="fav">Fav?</label>
+    <input type="radio"
+           [value]=true
+           name="fav"
+           class="form-control"
+           formControlName="fav"> True
+
+    <input type="radio"
+           [value]=false
+           name="fav"
+           class="form-control"
+           formControlName="fav"> False
+  </div>
+  <div [hidden]="addNewPersonForm.controls.fav.valid || addNewPersonForm.controls.fav.pristine"
+       class="alert alert-danger">
+    Fav is required
+  </div>
+
+  <button type="submit"
+          [disabled]="!addNewPersonForm.valid"
+          class="btn btn-success">Submit</button>
+</form>
+<p>Form value: {{ addNewPersonForm.value | json }}</p>
+<p>Model value: {{ model | json }}</p>

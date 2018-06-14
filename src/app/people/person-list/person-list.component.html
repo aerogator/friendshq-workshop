@@ -1,0 +1,26 @@
+<div class="person-list">
+  <div class="row">
+    <div class="col-xs-12 col-md-9">
+      <div class="list-group">
+
+        <app-show-person *ngFor="let f of friends"
+                         [friend]=f
+                         (notify)="handleNotify($event)"></app-show-person>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-3 sidebar">
+      <a routerLink="/people/add"
+         href="#"
+         class="btn btn-success sidebar-cta ">
+        Add someone
+      </a>
+    </div>
+  </div>
+</div>
+<div class="col-xs-12 col-md-9">
+  <div *ngIf="displayBanner"
+       class="alert alert-success box-msg"
+       role="alert">
+    <strong>List Saved!</strong> Your changes has been saved.
+  </div>
+</div>
